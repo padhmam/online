@@ -36,7 +36,7 @@
     .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;padding:2rem}
     .card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden;transition:transform .18s}
     .card:hover{transform:translateY(-5px)}
-    .product-main-img{width:100%;height:200px;object-fit:contain;background:#fdfdfd}
+    .product-main-img{width:100%;height:200px;object-fit:contain;background:#fdfdfd;cursor:pointer}
     .thumbnails{display:flex;justify-content:center;gap:.5rem;padding:.5rem}
     .thumbnails img{width:50px;height:50px;object-fit:cover;border-radius:5px;cursor:pointer;border:2px solid transparent}
     .thumbnails img:hover{border-color:var(--brand-dark)}
@@ -62,6 +62,9 @@
     .checkout-btn.upi{background:#3f51b5}
     footer{background:var(--brand-dark);color:#fff;text-align:center;padding:1.5rem;margin-top:2rem}
     footer p{margin:.3rem 0}
+    /* Lightbox */
+    .lightbox{display:none;position:fixed;z-index:9999;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.8);justify-content:center;align-items:center}
+    .lightbox img{max-width:90%;max-height:90%;border-radius:8px}
     /* Mobile */
     @media (max-width:768px){
       header{flex-direction:column;align-items:flex-start;padding:1rem}
@@ -101,11 +104,11 @@
   <section class="products" aria-live="polite">
     <!-- Product 1 -->
     <div class="card">
-      <img src="images/karungali-mala-1.jpg" class="product-main-img" id="main-karungali-mala" alt="Karungali Mala">
+      <img src="images/karungali-mala-1.jpg" class="product-main-img" id="main-karungali-mala" alt="Karungali Mala" onclick="openLightbox(this.src)">
       <div class="thumbnails">
-        <img src="images/karungali-mala-1.jpg" alt="karungali 1" onclick="changeImage('main-karungali-mala',this.src)">
-        <img src="images/karungali-mala-2.jpg" alt="karungali 2" onclick="changeImage('main-karungali-mala',this.src)">
-        <img src="images/karungali-mala-3.jpg" alt="karungali 3" onclick="changeImage('main-karungali-mala',this.src)">
+        <img src="images/karungali-mala-1.jpg" alt="karungali 1" onclick="changeImage('main-karungali-mala',this.src);openLightbox(this.src)">
+        <img src="images/karungali-mala-2.jpg" alt="karungali 2" onclick="changeImage('main-karungali-mala',this.src);openLightbox(this.src)">
+        <img src="images/karungali-mala-3.jpg" alt="karungali 3" onclick="changeImage('main-karungali-mala',this.src);openLightbox(this.src)">
       </div>
       <div class="card-content">
         <h3>Karungali Mala</h3>
@@ -117,10 +120,10 @@
 
     <!-- Product 2 -->
     <div class="card">
-      <img src="images/karungali-bracelet-1.jpg" class="product-main-img" id="main-karungali-bracelet" alt="Karungali Bracelet">
+      <img src="images/karungali-bracelet-1.jpg" class="product-main-img" id="main-karungali-bracelet" alt="Karungali Bracelet" onclick="openLightbox(this.src)">
       <div class="thumbnails">
-        <img src="images/karungali-bracelet-1.jpg" alt="bracelet 1" onclick="changeImage('main-karungali-bracelet',this.src)">
-        <img src="images/karungali-bracelet-2.jpg" alt="bracelet 2" onclick="changeImage('main-karungali-bracelet',this.src)">
+        <img src="images/karungali-bracelet-1.jpg" alt="bracelet 1" onclick="changeImage('main-karungali-bracelet',this.src);openLightbox(this.src)">
+        <img src="images/karungali-bracelet-2.jpg" alt="bracelet 2" onclick="changeImage('main-karungali-bracelet',this.src);openLightbox(this.src)">
       </div>
       <div class="card-content">
         <h3>Karungali Bracelet</h3>
@@ -132,10 +135,10 @@
 
     <!-- Product 3 -->
     <div class="card">
-      <img src="images/rudraksha-mala-1.jpg" class="product-main-img" id="main-rudraksha-mala" alt="Rudraksha Mala">
+      <img src="images/rudraksha-mala-1.jpg" class="product-main-img" id="main-rudraksha-mala" alt="Rudraksha Mala" onclick="openLightbox(this.src)">
       <div class="thumbnails">
-        <img src="images/rudraksha-mala-1.jpg" alt="rudraksha 1" onclick="changeImage('main-rudraksha-mala',this.src)">
-        <img src="images/rudraksha-mala-2.jpg" alt="rudraksha 2" onclick="changeImage('main-rudraksha-mala',this.src)">
+        <img src="images/rudraksha-mala-1.jpg" alt="rudraksha 1" onclick="changeImage('main-rudraksha-mala',this.src);openLightbox(this.src)">
+        <img src="images/rudraksha-mala-2.jpg" alt="rudraksha 2" onclick="changeImage('main-rudraksha-mala',this.src);openLightbox(this.src)">
       </div>
       <div class="card-content">
         <h3>Rudraksha Mala</h3>
@@ -147,10 +150,10 @@
 
     <!-- Product 4 -->
     <div class="card">
-      <img src="images/tulsi-mala-1.jpg" class="product-main-img" id="main-tulsi-mala" alt="Tulsi Mala">
+      <img src="images/tulsi-mala-1.jpg" class="product-main-img" id="main-tulsi-mala" alt="Tulsi Mala" onclick="openLightbox(this.src)">
       <div class="thumbnails">
-        <img src="images/tulsi-mala-1.jpg" alt="tulsi 1" onclick="changeImage('main-tulsi-mala',this.src)">
-        <img src="images/tulsi-mala-2.jpg" alt="tulsi 2" onclick="changeImage('main-tulsi-mala',this.src)">
+        <img src="images/tulsi-mala-1.jpg" alt="tulsi 1" onclick="changeImage('main-tulsi-mala',this.src);openLightbox(this.src)">
+        <img src="images/tulsi-mala-2.jpg" alt="tulsi 2" onclick="changeImage('main-tulsi-mala',this.src);openLightbox(this.src)">
       </div>
       <div class="card-content">
         <h3>Tulsi Mala</h3>
@@ -179,10 +182,11 @@
     <p>✔ 100% authentic products guaranteed</p>
   </section>
 
-  <div class="cart-sidebar" id="cart" aria-hidden="true">
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cart">
     <div class="cart-header">
       <span>Your Cart</span>
-      <button class="close-cart" onclick="toggleCart()" aria-label="Close cart">✖</button>
+      <button class="close-cart" onclick="toggleCart()">✖</button>
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-footer">
@@ -192,6 +196,11 @@
     </div>
   </div>
 
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Enlarged product">
+  </div>
+
   <footer>
     <p>© 2025 PADHMAM. All Rights Reserved.</p>
     <p>Follow us on Instagram | Facebook</p>
@@ -199,80 +208,53 @@
 
   <script>
     const header = document.getElementById('main-header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
-    });
+    window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>50)});
 
-    let cart = [];
-
-    function toggleCart() {
-      const el = document.getElementById('cart');
-      el.classList.toggle('open');
-      el.setAttribute('aria-hidden', !el.classList.contains('open'));
+    let cart=[];
+    function toggleCart(){document.getElementById('cart').classList.toggle('open')}
+    function addToCart(name,price){
+      let existing=cart.find(i=>i.name===name);
+      existing?existing.qty++:cart.push({name,price,qty:1});
+      updateCart();document.getElementById('cart').classList.add('open');
     }
-
-    function addToCart(name, price) {
-      const existing = cart.find(i => i.name === name);
-      if (existing) existing.qty++;
-      else cart.push({ name, price, qty: 1 });
-      updateCart();
-      document.getElementById('cart').classList.add('open');
-      document.getElementById('cart').setAttribute('aria-hidden', 'false');
-    }
-
-    function updateCart() {
-      const itemsContainer = document.getElementById('cart-items');
-      let total = 0, totalQty = 0;
-      itemsContainer.innerHTML = '';
-      cart.forEach((item, index) => {
-        total += item.price * item.qty;
-        totalQty += item.qty;
-        itemsContainer.innerHTML += `
-          <div class="cart-item">
-            <h4>${item.name}</h4>
-            <p>Price: ₹${item.price}</p>
-            <div class="quantity-controls">
-              <button onclick="changeQty(${index}, -1)" aria-label="Decrease">-</button>
-              <span>${item.qty}</span>
-              <button onclick="changeQty(${index}, 1)" aria-label="Increase">+</button>
-            </div>
-            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
-          </div>`;
+    function updateCart(){
+      let container=document.getElementById('cart-items');let total=0;container.innerHTML='';
+      cart.forEach((item,index)=>{
+        total+=item.price*item.qty;
+        container.innerHTML+=`<div class="cart-item">
+        <h4>${item.name}</h4>
+        <p>Price: ₹${item.price}</p>
+        <div class="quantity-controls">
+          <button onclick="changeQty(${index},-1)">-</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty(${index},1)">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+        </div>`;
       });
-      document.getElementById('cart-total').innerText = total;
-      document.getElementById('cart-count').innerText = totalQty;
+      document.getElementById('cart-total').innerText=total;
+      document.getElementById('cart-count').innerText=cart.length;
     }
-
-    function changeQty(index, delta) {
-      if (!cart[index]) return;
-      cart[index].qty += delta;
-      if (cart[index].qty <= 0) cart.splice(index, 1);
-      updateCart();
+    function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);updateCart()}
+    function removeItem(i){cart.splice(i,1);updateCart()}
+    function checkoutWhatsApp(){
+      let msg='🛍 *Order Details* %0A%0A';
+      cart.forEach(item=>msg+=`${item.name} x ${item.qty} - ₹${item.price*item.qty}%0A`);
+      msg+=`%0A*Total:* ₹${document.getElementById('cart-total').innerText}`;
+      window.open(`https://wa.me/91XXXXXXXXXX?text=${msg}`,'_blank');
     }
-
-    function removeItem(index) { cart.splice(index, 1); updateCart(); }
-
-    function checkoutWhatsApp() {
-      const phone = '91XXXXXXXXXX'; // replace with actual number
-      const total = document.getElementById('cart-total').innerText || '0';
-      let message = '🛍 Order Details\n\n';
-      cart.forEach(i => message += `${i.name} x ${i.qty} - ₹${i.price * i.qty}\n`);
-      message += `\nTotal: ₹${total}`;
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-      window.open(url, '_blank');
+    function checkoutUPI(){
+      const total=document.getElementById('cart-total').innerText;
+      const upiLink=`upi://pay?pa=yourupi@upi&pn=PADHMAM&am=${total}&cu=INR`;
+      window.location.href=upiLink;
     }
-
-    function checkoutUPI() {
-      const total = document.getElementById('cart-total').innerText || '0';
-      const upiLink = `upi://pay?pa=yourupi@upi&pn=PADHMAM&am=${total}&cu=INR`;
-      window.location.href = upiLink;
+    function changeImage(mainId,src){document.getElementById(mainId).src=src}
+    // Lightbox
+    function openLightbox(src){
+      document.getElementById('lightbox-img').src=src;
+      document.getElementById('lightbox').style.display='flex';
     }
-
-    function changeImage(mainId, src){ document.getElementById(mainId).src = src; }
-
-    // init
-    updateCart();
+    function closeLightbox(){document.getElementById('lightbox').style.display='none'}
   </script>
 </body>
 </html>
