@@ -3,431 +3,276 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PADHMAM – Karungali, Rudraksha & Spiritual Malas</title>
+  <title>PADHMAM Store – Karungali, Rudraksha & Spiritual Malas</title>
+  <meta name="description" content="PADHMAM – Authentic Karungali, Rudraksha & Spiritual Malas. Buy original malas, bracelets and more.">
+  <link rel="icon" href="images/logo.png" type="image/png">
   <style>
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: #faf9f7;
-      color: #333;
+    :root{
+      --brand-dark:#5a0d0d;
+      --brand-darker:#a4161a;
+      --accent:#ffd700;
+      --bg:#faf9f7;
+      --text:#333;
     }
-
-    /* Header */
-    #main-header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: linear-gradient(90deg, #5a0d0d, #a4161a);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-      z-index: 1000;
-      transition: background 0.3s, box-shadow 0.3s, padding 0.3s;
+    html{scroll-behavior:smooth;}
+    body{margin:0;font-family:'Segoe UI',Tahoma,Arial,sans-serif;background:var(--bg);color:var(--text);}
+    header{
+      background:var(--brand-dark);color:#fff;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;
+      position:sticky;top:0;z-index:1000;transition:background .3s,box-shadow .3s;
     }
-    #main-header.scrolled {
-      background: #a4161a;
-      padding: 0.8rem 2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    }
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1rem 2rem;
-    }
-    .logo img { height: 50px; transition: transform 0.3s; }
-    .logo img:hover { transform: scale(1.05); }
-    .nav-links a {
-      color: #fff;
-      margin: 0 1rem;
-      text-decoration: none;
-      font-weight: 500;
-      position: relative;
-      transition: color 0.3s;
-    }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0%;
-      height: 2px;
-      background: #ffd700;
-      transition: width 0.3s;
-    }
-    .nav-links a:hover { color: #ffd700; }
-    .nav-links a:hover::after { width: 100%; }
-    .cart-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #ffd700;
-      color: #5a0d0d;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      font-weight: 600;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-    }
-    .cart-btn:hover {
-      background: #f4c10f;
-      transform: translateY(-3px) scale(1.05);
-    }
-    .cart-badge {
-      background: #5a0d0d;
-      color: #fff;
-      font-size: 0.8rem;
-      padding: 3px 7px;
-      border-radius: 50%;
-      position: relative;
-      top: -2px;
-    }
-    @media (max-width: 768px) {
-      .header-container { flex-direction: column; align-items: flex-start; gap: 0.8rem; }
-      .nav-links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-    }
-
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(to right, #a52a2a, #f4a300);
-      text-align: center;
-      padding: 6rem 2rem;
-      color: #fff;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.3);
-    }
-    .hero h1, .hero p, .hero .cta-btn {
-      position: relative;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 1s forwards;
-    }
-    .hero h1 { font-size: 2.8rem; color: #ffd700; animation-delay: 0.3s; }
-    .hero p { font-size: 1.2rem; animation-delay: 0.6s; }
-    .hero .cta-btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 0.8rem 1.8rem;
-      background: #ffd700;
-      color: #5a0d0d;
-      font-weight: 600;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: transform 0.3s, background 0.3s;
-      animation-delay: 0.9s;
-    }
-    .hero .cta-btn:hover {
-      background: #f4c10f;
-      transform: translateY(-3px) scale(1.05);
-    }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-    @keyframes float { 0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);} }
-    .hero h1, .hero p, .hero .cta-btn { animation: fadeUp 1s forwards, float 3s ease-in-out infinite; }
-
-    /* Products */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    .card.visible { opacity: 1; transform: translateY(0); }
-    .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
-    .image-container { width: 100%; height: 200px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #fdfdfd; border-bottom: 1px solid #eee; }
-    .image-container img { max-width: 100%; max-height: 100%; object-fit: contain; cursor: pointer; transition: transform 0.3s; }
-    .image-container img:hover { transform: scale(1.05); }
-    .thumbnails { display: flex; justify-content: center; gap: 5px; padding: 8px; background: #fafafa; border-bottom: 1px solid #eee; }
-    .thumbnails img { width: 40px; height: 40px; object-fit: cover; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; transition: transform 0.2s; }
-    .thumbnails img:hover { transform: scale(1.1); }
-    .card-content { padding: 1rem; }
-    .card h3 { margin: 0; font-size: 1.2rem; color: #5a0d0d; }
-    .card p { font-size: 0.9rem; color: #555; }
-    .card button { background: #5a0d0d; color: #fff; border: none; padding: 0.6rem 1rem; margin-top: 0.5rem; cursor: pointer; border-radius: 5px; transition: background 0.2s; }
-    .card button:hover { background: #a4161a; }
-
-    /* About, Contact, Policies */
-    section { padding: 2rem; }
-    footer { background: #5a0d0d; color: #fff; text-align: center; padding: 1.5rem; margin-top: 2rem; }
-    footer p { margin: 0.3rem 0; }
-
-    /* Back to top */
-    #back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ffd700;
-      color: #5a0d0d;
-      border: none;
-      padding: 0.6rem 0.9rem;
-      border-radius: 50%;
-      cursor: pointer;
-      display: none;
-      z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      transition: transform 0.3s, opacity 0.3s;
-    }
-    #back-to-top:hover { transform: scale(1.1); }
-
+    header.scrolled{background:var(--brand-darker);box-shadow:0 2px 8px rgba(0,0,0,.2);}
+    header img{height:50px}
+    nav{display:flex;gap:1rem;align-items:center}
+    nav a{color:#fff;text-decoration:none;font-weight:500;position:relative;font-size:0.95rem}
+    nav a::after{content:'';position:absolute;left:0;bottom:-5px;width:0;height:2px;background:var(--accent);transition:width .25s}
+    nav a:hover::after{width:100%}
+    .cart-btn{background:var(--accent);color:var(--brand-dark);border:none;padding:.6rem 1rem;border-radius:25px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.5rem;position:relative}
+    .cart-badge{background:var(--brand-dark);color:#fff;font-size:.8rem;border-radius:50%;padding:2px 7px;position:absolute;top:-8px;right:-8px}
+    .hero{background:url('images/hero.jpg') center/cover no-repeat;text-align:center;padding:5rem 2rem;color:#fff;position:relative}
+    .hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45)}
+    .hero h1,.hero p{position:relative;z-index:1;margin:0}
+    .hero h1{font-size:2.2rem;margin-bottom:.6rem;text-shadow:2px 2px 6px rgba(0,0,0,.6)}
+    .hero p{font-size:1.05rem;text-shadow:1px 1px 4px rgba(0,0,0,.5)}
+    .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;padding:2rem}
+    .card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);overflow:hidden;transition:transform .18s}
+    .card:hover{transform:translateY(-5px)}
+    .product-main-img{width:100%;height:200px;object-fit:contain;background:#fdfdfd}
+    .thumbnails{display:flex;justify-content:center;gap:.5rem;padding:.5rem}
+    .thumbnails img{width:50px;height:50px;object-fit:cover;border-radius:5px;cursor:pointer;border:2px solid transparent}
+    .thumbnails img:hover{border-color:var(--brand-dark)}
+    .card-content{padding:1rem}
+    .card h3{margin:0;font-size:1.15rem;color:var(--brand-dark)}
+    .card p{font-size:.93rem;color:#555;margin:.4rem 0}
+    .card button{background:var(--brand-dark);color:#fff;border:none;padding:.6rem 1rem;margin-top:.4rem;cursor:pointer;border-radius:6px}
+    .card button:hover{background:var(--brand-darker)}
     /* Cart Sidebar */
-    .cart-sidebar {
-      position: fixed;
-      right: -400px;
-      top: 0;
-      width: 80%;
-      max-width: 350px;
-      height: 100%;
-      background: #fff;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.2);
-      transition: right 0.3s ease;
-      z-index: 2000;
-      display: flex;
-      flex-direction: column;
+    .cart-sidebar{position:fixed;top:0;right:-400px;width:350px;height:100%;background:#fff;box-shadow:-2px 0 8px rgba(0,0,0,.18);transition:right .28s;z-index:2000;display:flex;flex-direction:column}
+    .cart-sidebar.open{right:0}
+    .cart-header{background:var(--brand-dark);color:#fff;padding:1rem;display:flex;justify-content:space-between;align-items:center;font-weight:700}
+    .close-cart{background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
+    .cart-items{flex:1;overflow-y:auto;padding:1rem}
+    .cart-item{background:#fafafa;padding:.8rem;border-radius:8px;margin-bottom:.8rem;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+    .cart-item h4{margin:0 0 .3rem 0;font-size:1rem;color:var(--brand-dark)}
+    .quantity-controls{display:flex;align-items:center;gap:.5rem;margin-top:.4rem}
+    .quantity-controls button{background:var(--brand-dark);color:#fff;border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-weight:700}
+    .remove-btn{background:none;border:none;color:var(--brand-darker);font-size:.85rem;cursor:pointer;margin-top:.3rem;text-decoration:underline}
+    .cart-footer{padding:1rem;border-top:1px solid #eee}
+    .checkout-btn{width:100%;background:var(--brand-dark);color:#fff;border:none;padding:.7rem;cursor:pointer;border-radius:6px;margin-top:.5rem}
+    .checkout-btn.whatsapp{background:#25D366}
+    .checkout-btn.upi{background:#3f51b5}
+    footer{background:var(--brand-dark);color:#fff;text-align:center;padding:1.5rem;margin-top:2rem}
+    footer p{margin:.3rem 0}
+    /* Mobile */
+    @media (max-width:768px){
+      header{flex-direction:column;align-items:flex-start;padding:1rem}
+      header img{height:40px;margin-bottom:.4rem}
+      nav{flex-wrap:wrap;gap:.5rem;margin-bottom:.4rem}
+      nav a{font-size:.9rem}
+      .cart-btn{align-self:flex-end;padding:.45rem .8rem;font-size:.9rem}
+      .hero{padding:3rem 1rem}
+      .hero h1{font-size:1.8rem}
+      .hero p{font-size:1rem}
+      .products{grid-template-columns:1fr;padding:1rem}
+      .card{max-width:420px;margin:0 auto}
+      .product-main-img{height:180px}
+      .thumbnails img{width:40px;height:40px}
+      .cart-sidebar{width:100%;right:-100%}
+      .cart-sidebar.open{right:0}
     }
-    .cart-sidebar.open { right: 0; }
-    .cart-header { background: #5a0d0d; color: #fff; padding: 1rem; display: flex; justify-content: space-between; }
-    .cart-items { flex:1; overflow-y:auto; padding:1rem; }
-    .cart-footer { padding:1rem; border-top:1px solid #ddd; }
-    .checkout-btn { width:100%; background:#25D366; color:#fff; padding:0.7rem; border:none; border-radius:5px; cursor:pointer; margin-top:0.5rem; }
-    .cart-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 8px;
-    }
-    .cart-item img { border-radius: 5px; }
-    .cart-item button {
-      background: #a4161a;
-      color: #fff;
-      border: none;
-      padding: 4px 8px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.2s;
-    }
-    .cart-item button:hover { background: #5a0d0d; }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header id="main-header">
-    <div class="header-container">
-      <a href="#home" class="logo"><img src="images/logo.png" alt="PADHMAM Logo"></a>
-      <nav class="nav-links">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="#policies">Policies</a>
-      </nav>
-      <button class="cart-btn" onclick="toggleCart()">
-        🛒 Cart <span class="cart-badge" id="cart-count">0</span>
-      </button>
-    </div>
+    <img src="images/logo.png" alt="PADHMAM Logo">
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#policies">Policies</a>
+    </nav>
+    <button class="cart-btn" onclick="toggleCart()" aria-label="Open cart">🛒 Cart <span class="cart-badge" id="cart-count">0</span></button>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
+  <section class="hero" id="home" role="banner">
     <h1>Welcome to PADHMAM</h1>
     <p>Authentic Karungali, Rudraksha & Spiritual Malas crafted with devotion</p>
-    <a href="#products" class="cta-btn">Shop Now</a>
   </section>
 
-  <!-- Products -->
-  <section class="products">
-    <!-- Karungali Mala -->
+  <section class="products" aria-live="polite">
+    <!-- Product 1 -->
     <div class="card">
-      <div class="image-container">
-        <img src="images/karungali-mala-1.jpg" alt="Karungali Mala" class="main-image">
-      </div>
+      <img src="images/karungali-mala-1.jpg" class="product-main-img" id="main-karungali-mala" alt="Karungali Mala">
       <div class="thumbnails">
-        <img src="images/karungali-mala-1.jpg" onclick="swapImage(this)">
-        <img src="images/karungali-mala-2.jpg" onclick="swapImage(this)">
-        <img src="images/karungali-mala-3.jpg" onclick="swapImage(this)">
-        <img src="images/karungali-mala-4.jpg" onclick="swapImage(this)">
+        <img src="images/karungali-mala-1.jpg" alt="karungali 1" onclick="changeImage('main-karungali-mala',this.src)">
+        <img src="images/karungali-mala-2.jpg" alt="karungali 2" onclick="changeImage('main-karungali-mala',this.src)">
+        <img src="images/karungali-mala-3.jpg" alt="karungali 3" onclick="changeImage('main-karungali-mala',this.src)">
       </div>
       <div class="card-content">
         <h3>Karungali Mala</h3>
         <p>100% authentic, 108+1 beads. Perfect for meditation & daily wear.</p>
         <p><strong>₹799</strong></p>
-        <button onclick="addToCart('Karungali Mala',799,'images/karungali-mala-1.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Karungali Mala',799)">Add to Cart</button>
       </div>
     </div>
 
-    <!-- Karungali Bracelet -->
+    <!-- Product 2 -->
     <div class="card">
-      <div class="image-container">
-        <img src="images/karungali-bracelet-1.jpg" alt="Karungali Bracelet" class="main-image">
-      </div>
+      <img src="images/karungali-bracelet-1.jpg" class="product-main-img" id="main-karungali-bracelet" alt="Karungali Bracelet">
       <div class="thumbnails">
-        <img src="images/karungali-bracelet-1.jpg" onclick="swapImage(this)">
-        <img src="images/karungali-bracelet-2.jpg" onclick="swapImage(this)">
+        <img src="images/karungali-bracelet-1.jpg" alt="bracelet 1" onclick="changeImage('main-karungali-bracelet',this.src)">
+        <img src="images/karungali-bracelet-2.jpg" alt="bracelet 2" onclick="changeImage('main-karungali-bracelet',this.src)">
       </div>
       <div class="card-content">
         <h3>Karungali Bracelet</h3>
         <p>Natural healing bracelet made with pure Karungali beads.</p>
         <p><strong>₹499</strong></p>
-        <button onclick="addToCart('Karungali Bracelet',499,'images/karungali-bracelet-1.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Karungali Bracelet',499)">Add to Cart</button>
       </div>
     </div>
 
-    <!-- Rudraksha Mala -->
+    <!-- Product 3 -->
     <div class="card">
-      <div class="image-container">
-        <img src="images/rudraksha-mala-1.jpg" alt="Rudraksha Mala" class="main-image">
-      </div>
+      <img src="images/rudraksha-mala-1.jpg" class="product-main-img" id="main-rudraksha-mala" alt="Rudraksha Mala">
       <div class="thumbnails">
-        <img src="images/rudraksha-mala-1.jpg" onclick="swapImage(this)">
-        <img src="images/rudraksha-mala-2.jpg" onclick="swapImage(this)">
+        <img src="images/rudraksha-mala-1.jpg" alt="rudraksha 1" onclick="changeImage('main-rudraksha-mala',this.src)">
+        <img src="images/rudraksha-mala-2.jpg" alt="rudraksha 2" onclick="changeImage('main-rudraksha-mala',this.src)">
       </div>
       <div class="card-content">
         <h3>Rudraksha Mala</h3>
         <p>Powerful 108 beads mala, brings peace and spiritual strength.</p>
         <p><strong>₹999</strong></p>
-        <button onclick="addToCart('Rudraksha Mala',999,'images/rudraksha-mala-1.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Rudraksha Mala',999)">Add to Cart</button>
       </div>
     </div>
 
-    <!-- Tulsi Mala -->
+    <!-- Product 4 -->
     <div class="card">
-      <div class="image-container">
-        <img src="images/tulsi-mala-1.jpg" alt="Tulsi Mala" class="main-image">
-      </div>
+      <img src="images/tulsi-mala-1.jpg" class="product-main-img" id="main-tulsi-mala" alt="Tulsi Mala">
       <div class="thumbnails">
-        <img src="images/tulsi-mala-1.jpg" onclick="swapImage(this)">
-        <img src="images/tulsi-mala-2.jpg" onclick="swapImage(this)">
+        <img src="images/tulsi-mala-1.jpg" alt="tulsi 1" onclick="changeImage('main-tulsi-mala',this.src)">
+        <img src="images/tulsi-mala-2.jpg" alt="tulsi 2" onclick="changeImage('main-tulsi-mala',this.src)">
       </div>
       <div class="card-content">
         <h3>Tulsi Mala</h3>
         <p>Sacred Tulsi beads, perfect for chanting and positive energy.</p>
         <p><strong>₹599</strong></p>
-        <button onclick="addToCart('Tulsi Mala',599,'images/tulsi-mala-1.jpg')">Add to Cart</button>
+        <button onclick="addToCart('Tulsi Mala',599)">Add to Cart</button>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about">
+  <section id="about" style="padding:2rem;">
     <h2>About Us</h2>
-    <p>PADHMAM brings you authentic Karungali Malas, Rudraksha, and spiritual accessories, crafted with devotion and purity. Each product is made with care, combining traditional craftsmanship with modern quality standards, giving you a sacred experience and lasting spiritual value.</p>
+    <p>PADHMAM brings you authentic Karungali Malas, Rudraksha, and spiritual accessories, crafted with devotion and purity.</p>
   </section>
 
-  <!-- Contact -->
-  <section id="contact">
+  <section id="contact" style="padding:2rem;">
     <h2>Contact Us</h2>
     <p>Email: support@padhmam.com</p>
-    <p>WhatsApp: +91 9446936360</p>
+    <p>WhatsApp: +91XXXXXXXXXX</p>
   </section>
 
-  <!-- Policies -->
-  <section id="policies">
+  <section id="policies" style="padding:2rem;">
     <h2>Our Policies</h2>
     <p>✔ Shipping in 3–5 business days</p>
+    <p>✔ Easy 7-day return</p>
     <p>✔ 100% authentic products guaranteed</p>
   </section>
 
-  <!-- Cart Sidebar -->
-  <div class="cart-sidebar" id="cart">
+  <div class="cart-sidebar" id="cart" aria-hidden="true">
     <div class="cart-header">
-      <span>🛒 Your Cart</span>
-      <button onclick="toggleCart()">✖</button>
+      <span>Your Cart</span>
+      <button class="close-cart" onclick="toggleCart()" aria-label="Close cart">✖</button>
     </div>
     <div class="cart-items" id="cart-items"></div>
     <div class="cart-footer">
-      <strong>Total: ₹<span id="cart-total">0</span></strong>
-      <button class="checkout-btn" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+      <p><strong>Total: ₹<span id="cart-total">0</span></strong></p>
+      <button class="checkout-btn whatsapp" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+      <button class="checkout-btn upi" onclick="checkoutUPI()">Pay with UPI</button>
     </div>
   </div>
 
-  <!-- Back to Top -->
-  <button id="back-to-top">⬆️</button>
-
-  <!-- Footer -->
   <footer>
     <p>© 2025 PADHMAM. All Rights Reserved.</p>
     <p>Follow us on Instagram | Facebook</p>
   </footer>
 
   <script>
-    // Header scroll & back-to-top
     const header = document.getElementById('main-header');
-    const backTop = document.getElementById('back-to-top');
     window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 50);
-      backTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
     });
-    backTop.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
 
-    // Cart functionality
     let cart = [];
-    function toggleCart(){ document.getElementById('cart').classList.toggle('open'); }
-    function addToCart(name, price, image){
-      let item = cart.find(i => i.name===name);
-      item ? item.quantity++ : cart.push({name, price, image, quantity:1});
+
+    function toggleCart() {
+      const el = document.getElementById('cart');
+      el.classList.toggle('open');
+      el.setAttribute('aria-hidden', !el.classList.contains('open'));
+    }
+
+    function addToCart(name, price) {
+      const existing = cart.find(i => i.name === name);
+      if (existing) existing.qty++;
+      else cart.push({ name, price, qty: 1 });
       updateCart();
       document.getElementById('cart').classList.add('open');
-    }
-    function updateCart(){
-      const itemsContainer = document.getElementById('cart-items');
-      itemsContainer.innerHTML='';
-      let total=0;
-      cart.forEach((item,index)=>{
-        total+=item.price*item.quantity;
-        itemsContainer.innerHTML+=`
-          <div class="cart-item">
-            <img src="${item.image}" alt="${item.name}" width="50">
-            <div>
-              <h4>${item.name}</h4>
-              <p>Qty: ${item.quantity}</p>
-              <p>₹${item.price*item.quantity}</p>
-            </div>
-            <button onclick="removeItem(${index})">🗑</button>
-          </div>`;
-      });
-      document.getElementById('cart-total').innerText=total;
-      document.getElementById('cart-count').innerText=cart.reduce((sum,i)=>sum+i.quantity,0);
-    }
-    function removeItem(index){ cart.splice(index,1); updateCart(); }
-    function swapImage(el){ el.closest('.card').querySelector('.main-image').src=el.src; }
-    function checkoutWhatsApp(){
-      if(cart.length===0){ alert("Cart is empty!"); return; }
-      let msg='🛍️ Order Details:%0A%0A';
-      cart.forEach(item=>msg+=`${item.name} x ${item.quantity} = ₹${item.price*item.quantity}%0A`);
-      msg+=`%0ATotal: ₹${cart.reduce((sum,i)=>sum+i.price*i.quantity,0)}`;
-      window.open(`https://wa.me/919446936360?text=${msg}`,'_blank');
+      document.getElementById('cart').setAttribute('aria-hidden', 'false');
     }
 
-    // Scroll animation for products
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    function updateCart() {
+      const itemsContainer = document.getElementById('cart-items');
+      let total = 0, totalQty = 0;
+      itemsContainer.innerHTML = '';
+      cart.forEach((item, index) => {
+        total += item.price * item.qty;
+        totalQty += item.qty;
+        itemsContainer.innerHTML += `
+          <div class="cart-item">
+            <h4>${item.name}</h4>
+            <p>Price: ₹${item.price}</p>
+            <div class="quantity-controls">
+              <button onclick="changeQty(${index}, -1)" aria-label="Decrease">-</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${index}, 1)" aria-label="Increase">+</button>
+            </div>
+            <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+          </div>`;
       });
-    }, {threshold:0.2});
-    document.querySelectorAll('.card').forEach(card=>observer.observe(card));
+      document.getElementById('cart-total').innerText = total;
+      document.getElementById('cart-count').innerText = totalQty;
+    }
+
+    function changeQty(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+      updateCart();
+    }
+
+    function removeItem(index) { cart.splice(index, 1); updateCart(); }
+
+    function checkoutWhatsApp() {
+      const phone = '91XXXXXXXXXX'; // replace with actual number
+      const total = document.getElementById('cart-total').innerText || '0';
+      let message = '🛍 Order Details\n\n';
+      cart.forEach(i => message += `${i.name} x ${i.qty} - ₹${i.price * i.qty}\n`);
+      message += `\nTotal: ₹${total}`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+
+    function checkoutUPI() {
+      const total = document.getElementById('cart-total').innerText || '0';
+      const upiLink = `upi://pay?pa=yourupi@upi&pn=PADHMAM&am=${total}&cu=INR`;
+      window.location.href = upiLink;
+    }
+
+    function changeImage(mainId, src){ document.getElementById(mainId).src = src; }
+
+    // init
+    updateCart();
   </script>
 </body>
 </html>
