@@ -18,14 +18,12 @@
       --glass: rgba(255,255,255,0.6);
       --radius: 14px;
     }
-    /* base */
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;background:var(--bg);color:#222;-webkit-font-smoothing:antialiased}
     a{color:inherit}
     img{display:block;max-width:100%}
 
-    /* layout */
     .wrap{max-width:1150px;margin:0 auto;padding:1rem}
     header{
       background:linear-gradient(180deg,var(--brand-dark),var(--brand-darker));
@@ -46,18 +44,16 @@
     .cart-btn{background:var(--accent);color:var(--brand-dark);border:none;padding:.55rem .9rem;border-radius:999px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;position:relative;box-shadow:0 6px 18px rgba(160,120,0,0.15)}
     .cart-badge{position:absolute;top:-8px;right:-8px;background:var(--brand-dark);color:#fff;font-size:.75rem;padding:4px 7px;border-radius:999px}
 
-    /* hero */
     .hero{background:url('images/hero.jpg') center/cover no-repeat;border-radius:12px;margin:1.25rem 0;padding:3.2rem;color:#fff;position:relative;overflow:hidden}
     .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.5))}
     .hero .inner{position:relative;z-index:2;max-width:760px}
     .hero h1{margin:0;font-size:1.9rem;letter-spacing:.6px}
     .hero p{margin:.6rem 0 0;color:rgba(255,255,255,0.92);font-weight:600}
 
-    /* products */
     .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin:1rem 0}
     .card{background:var(--card);border-radius:12px;padding:0;overflow:hidden;box-shadow:0 6px 20px rgba(25,20,20,.06);transition:transform .22s, box-shadow .22s}
     .card:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(20,16,16,.09)}
-    .media{position:relative;padding:1rem;background:linear-gradient(180deg,var(--glass),rgba(255,255,255,0.4)) display:flex;align-items:center;justify-content:center}
+    .media{position:relative;padding:1rem;background:linear-gradient(180deg,var(--glass),rgba(255,255,255,0.4));display:flex;align-items:center;justify-content:center}
     .media img{width:100%;height:220px;object-fit:contain;border-radius:6px;cursor:pointer;transition:transform .25s}
     .media img:hover{transform:scale(1.04)}
     .badge{position:absolute;top:12px;left:12px;background:var(--brand-darker);color:#fff;padding:.35rem .55rem;border-radius:999px;font-size:.82rem;font-weight:700;box-shadow:0 8px 20px rgba(164,22,26,.14)}
@@ -71,11 +67,36 @@
     .btn{padding:.55rem .8rem;border-radius:10px;border:none;cursor:pointer;font-weight:700}
     .btn-primary{background:var(--brand-darker);color:#fff;box-shadow:0 8px 18px rgba(164,22,26,.12)}
     .btn-ghost{background:transparent;border:1px solid #eee;color:var(--brand-dark)}
-    .thumbs{display:flex;gap:.45rem;margin-top:.7rem}
-    .thumbs img{width:44px;height:44px;object-fit:cover;border-radius:8px;cursor:pointer;border:2px solid transparent}
-    .thumbs img:hover{border-color:var(--brand-dark)}
 
-    /* cart sidebar */
+    /* thumbnails scrollable */
+    .thumbs {
+      display: flex;
+      gap: 0.45rem;
+      margin-top: 0.7rem;
+      overflow-x: auto;
+      padding-bottom: 0.4rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--brand-dark) rgba(0,0,0,0.1);
+    }
+    .thumbs::-webkit-scrollbar { height: 6px; }
+    .thumbs::-webkit-scrollbar-thumb { background: var(--brand-dark); border-radius: 4px; }
+    .thumbs::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 4px; }
+
+    .thumbs img {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      flex: 0 0 auto;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .thumbs img:hover {
+      border-color: var(--brand-dark);
+      transform: scale(1.05);
+    }
+
     .cart-sidebar{position:fixed;top:0;right:-420px;width:380px;height:100%;background:linear-gradient(180deg,#fff,#fbfbfb);box-shadow:-12px 0 40px rgba(8,6,6,.12);transition:right .28s;border-radius:12px 0 0 12px;padding:0;z-index:1300;display:flex;flex-direction:column}
     .cart-sidebar.open{right:12px}
     .cart-header{padding:1rem;border-bottom:1px solid #efefef;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,var(--brand-dark),var(--brand-darker));color:#fff;border-radius:12px 12px 0 0}
@@ -88,15 +109,12 @@
     .cart-footer{padding:1rem;border-top:1px solid #efefef}
     .cart-total{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:1.05rem;margin-bottom:.6rem}
 
-    /* lightbox */
     .lightbox{position:fixed;inset:0;background:rgba(5,5,5,.85);display:none;align-items:center;justify-content:center;padding:1.25rem;z-index:9999}
     .lightbox.show{display:flex}
     .lightbox img{max-width:92%;max-height:92%;border-radius:10px;box-shadow:0 18px 60px rgba(0,0,0,.6)}
 
-    /* footer */
     footer{padding:1.4rem 0;margin-top:1.2rem;background:linear-gradient(180deg,var(--brand-dark),var(--brand-darker));color:#fff;text-align:center;border-radius:10px}
 
-    /* responsive */
     @media (max-width:860px){
       .hero{padding:2.4rem}
       .media img{height:200px}
@@ -115,272 +133,263 @@
 </head>
 <body>
 
-  <!-- header -->
-  <header>
-    <div class="wrap header-inner">
-      <div style="display:flex;align-items:center;gap:.9rem">
-        <div class="brand">
-          <img src="images/logo.png" alt="PADHMAM logo">
-          <div class="title">
-            PADHMAM
-            <div style="font-size:.78rem;font-weight:600;opacity:.9">Karungali • Rudraksha • Malas</div>
-          </div>
+<header>
+  <div class="wrap header-inner">
+    <div style="display:flex;align-items:center;gap:.9rem">
+      <div class="brand">
+        <img src="images/logo.png" alt="PADHMAM logo">
+        <div class="title">
+          PADHMAM
+          <div style="font-size:.78rem;font-weight:600;opacity:.9">Karungali • Rudraksha • Malas</div>
         </div>
       </div>
-
-      <nav aria-label="Main navigation" id="main-nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <a href="#policies">Policies</a>
-      </nav>
-
-      <div class="actions">
-        <button class="cart-btn" onclick="toggleCart()" aria-label="Open cart">
-          🛒 Cart <span id="cart-count" class="cart-badge">0</span>
-        </button>
-        <button class="btn btn-ghost" style="display:none" id="hamb" onclick="toggleNav()">☰</button>
-      </div>
     </div>
-  </header>
 
-  <main class="wrap">
-    <!-- hero -->
-    <section class="hero" id="home" role="banner">
-      <div class="inner">
-        <h1>Authentic Karungali & Spiritual Malas</h1>
-        <p>Handcrafted with devotion — authentic beads, pure energy.</p>
-      </div>
-    </section>
+    <nav aria-label="Main navigation" id="main-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#policies">Policies</a>
+    </nav>
 
-    <!-- products -->
-    <section class="products" aria-live="polite" id="catalog">
-      <!-- card template repeated -->
-      <article class="card" data-sku="KAR-MALA-01">
-        <div class="media">
-          <span class="badge">Limited</span>
-          <img src="images/karungali-mala-1.jpg" alt="Karungali Mala" onclick="openLightbox(this.src)">
-        </div>
-        <div class="card-body">
-          <div class="title-row">
-            <h3>Karungali Mala</h3>
-            <div class="price">₹799</div>
-          </div>
-          <div class="muted">108+1 beads · Meditation & daily wear</div>
-
-          <div class="thumbs" aria-hidden="false">
-            <img src="images/karungali-mala-1.jpg" alt="thumb1" onclick="swap(this, 'main', this.src)">
-            <img src="images/karungali-mala-2.jpg" alt="thumb2" onclick="swap(this, 'main', this.src)">
-            <img src="images/karungali-mala-3.jpg" alt="thumb3" onclick="swap(this, 'main', this.src)">
-          </div>
-
-          <div class="card-actions">
-            <button class="btn btn-primary" onclick="addToCart({name:'Karungali Mala', price:799, img:'images/karungali-mala-1.jpg'})">Add to cart</button>
-            <button class="btn btn-ghost" onclick="openLightbox('images/karungali-mala-1.jpg')">View</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="card" data-sku="KAR-BRACE-01">
-        <div class="media">
-          <img src="images/karungali-bracelet-1.jpg" alt="Karungali Bracelet" onclick="openLightbox(this.src)">
-        </div>
-        <div class="card-body">
-          <div class="title-row">
-            <h3>Karungali Bracelet</h3>
-            <div class="price">₹499 <span class="old">₹599</span></div>
-          </div>
-          <div class="muted">Natural healing bracelet</div>
-          <div class="thumbs">
-            <img src="images/karungali-bracelet-1.jpg" alt="" onclick="openLightbox(this.src)">
-            <img src="images/karungali-bracelet-2.jpg" alt="" onclick="openLightbox(this.src)">
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-primary" onclick="addToCart({name:'Karungali Bracelet', price:499, img:'images/karungali-bracelet-1.jpg'})">Add to cart</button>
-            <button class="btn btn-ghost" onclick="openLightbox('images/karungali-bracelet-1.jpg')">View</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="card" data-sku="RUDRA-01">
-        <div class="media">
-          <img src="images/rudraksha-mala-1.jpg" alt="Rudraksha Mala" onclick="openLightbox(this.src)">
-        </div>
-        <div class="card-body">
-          <div class="title-row">
-            <h3>Rudraksha Mala</h3>
-            <div class="price">₹999</div>
-          </div>
-          <div class="muted">Powerful 108 beads mala</div>
-          <div class="thumbs">
-            <img src="images/rudraksha-mala-1.jpg" alt="" onclick="openLightbox(this.src)">
-            <img src="images/rudraksha-mala-2.jpg" alt="" onclick="openLightbox(this.src)">
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-primary" onclick="addToCart({name:'Rudraksha Mala', price:999, img:'images/rudraksha-mala-1.jpg'})">Add to cart</button>
-            <button class="btn btn-ghost" onclick="openLightbox('images/rudraksha-mala-1.jpg')">View</button>
-          </div>
-        </div>
-      </article>
-
-      <article class="card" data-sku="TULSI-01">
-        <div class="media">
-          <img src="images/tulsi-mala-1.jpg" alt="Tulsi Mala" onclick="openLightbox(this.src)">
-        </div>
-        <div class="card-body">
-          <div class="title-row">
-            <h3>Tulsi Mala</h3>
-            <div class="price">₹599</div>
-          </div>
-          <div class="muted">Sacred Tulsi beads</div>
-          <div class="thumbs">
-            <img src="images/tulsi-mala-1.jpg" alt="" onclick="openLightbox(this.src)">
-            <img src="images/tulsi-mala-2.jpg" alt="" onclick="openLightbox(this.src)">
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-primary" onclick="addToCart({name:'Tulsi Mala', price:599, img:'images/tulsi-mala-1.jpg'})">Add to cart</button>
-            <button class="btn btn-ghost" onclick="openLightbox('images/tulsi-mala-1.jpg')">View</button>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- info sections -->
-    <section id="about" style="padding:1rem 0">
-      <h2 style="margin:.4rem 0 0;font-size:1.1rem;color:var(--brand-dark)">About Us</h2>
-      <p style="margin:.45rem 0;color:var(--muted)">PADHMAM crafts authentic malas and spiritual accessories with devotion and purity. Shipping 3–5 business days. Easy 7-day return.</p>
-    </section>
-
-    <section id="contact" style="padding:1rem 0">
-      <h2 style="margin:.4rem 0 0;font-size:1.05rem;color:var(--brand-dark)">Contact</h2>
-      <p style="margin:.45rem 0;color:var(--muted)">Email: support@padhmam.com · WhatsApp: +91XXXXXXXXXX</p>
-    </section>
-
-  </main>
-
-  <!-- cart sidebar -->
-  <aside class="cart-sidebar" id="cart">
-    <div class="cart-header">
-      <div style="font-weight:800">Your Cart</div>
-      <button style="background:transparent;border:none;color:#fff;font-size:1.1rem;cursor:pointer" onclick="toggleCart()">✖</button>
+    <div class="actions">
+      <button class="cart-btn" onclick="toggleCart()" aria-label="Open cart">
+        🛒 Cart <span id="cart-count" class="cart-badge">0</span>
+      </button>
+      <button class="btn btn-ghost" style="display:none" id="hamb" onclick="toggleNav()">☰</button>
     </div>
-    <div class="cart-items" id="cart-items" role="list"></div>
-    <div class="cart-footer">
-      <div class="cart-total"><span>Total</span><span id="cart-total">₹0</span></div>
-      <button class="btn btn-primary" style="width:100%;margin-bottom:.5rem" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
-      <button class="btn btn-ghost" style="width:100%" onclick="checkoutUPI()">Pay with UPI</button>
-      <div style="font-size:.9rem;color:#666;margin-top:.6rem;text-align:center">Secure payment · Authentic guarantee</div>
-    </div>
-  </aside>
-
-  <!-- lightbox -->
-  <div id="lightbox" class="lightbox" onclick="closeLightbox()" role="dialog" aria-hidden="true">
-    <img id="lightbox-img" src="" alt="Enlarged product image" onclick="event.stopPropagation()">
   </div>
+</header>
 
-  <footer>
-    <div class="wrap">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
-        <div>© 2025 PADHMAM</div>
-        <div style="opacity:.95">Follow us on Instagram · Facebook</div>
-      </div>
+<main class="wrap">
+  <section class="hero" id="home" role="banner">
+    <div class="inner">
+      <h1>Authentic Karungali & Spiritual Malas</h1>
+      <p>Handcrafted with devotion — authentic beads, pure energy.</p>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    /* header behavior */
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', ()=> header.style.boxShadow = (window.scrollY>20) ? '0 14px 40px rgba(10,8,8,.12)' : '0 6px 18px rgba(10,8,8,.12)');
+  <section class="products" aria-live="polite" id="catalog">
+    <!-- Karungali Mala -->
+    <article class="card" data-sku="KAR-MALA-01">
+      <div class="media">
+        <span class="badge">Limited</span>
+        <img src="images/karungali-mala-1.jpg" alt="Karungali Mala" onclick="openLightbox(this.src)">
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h3>Karungali Mala</h3>
+          <div class="price">₹799</div>
+        </div>
+        <div class="muted">108+1 beads · Meditation & daily wear</div>
 
-    /* cart with localStorage persistence */
-    const CART_KEY = 'padhmam_cart_v1';
-    let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+        <div class="thumbs">
+          <img src="images/karungali-mala-1.jpg" alt="thumb1" onclick="swap(this)">
+          <img src="images/karungali-mala-2.jpg" alt="thumb2" onclick="swap(this)">
+          <img src="images/karungali-mala-3.jpg" alt="thumb3" onclick="swap(this)">
+        </div>
 
-    function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
-    function cartCount(){ return cart.reduce((s,i)=>s+i.qty,0); }
-    function cartTotal(){ return cart.reduce((s,i)=>s + (i.price * i.qty),0); }
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="addToCart({name:'Karungali Mala', price:799, img:'images/karungali-mala-1.jpg'})">Add to cart</button>
+          <button class="btn btn-ghost" onclick="openLightbox('images/karungali-mala-1.jpg')">View</button>
+        </div>
+      </div>
+    </article>
 
-    function updateCartUI(){
-      const list = document.getElementById('cart-items'); list.innerHTML='';
-      if(cart.length===0){ list.innerHTML = '<div style="padding:1.2rem;color:#666">Your cart is empty</div>'; }
-      cart.forEach((it, idx)=>{
-        list.innerHTML += `
-          <div class="cart-item" role="listitem">
-            <img src="${it.img}" alt="${it.name}">
-            <div style="flex:1">
-              <h4 style="margin:0;font-size:.98rem">${it.name}</h4>
-              <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.45rem">
-                <div style="color:#777">₹${it.price} × ${it.qty}</div>
-                <div class="qty">
-                  <button onclick="changeQty(${idx}, -1)">−</button>
-                  <div style="min-width:22px;text-align:center">${it.qty}</div>
-                  <button onclick="changeQty(${idx}, 1)">+</button>
-                </div>
-              </div>
+    <!-- Karungali Bracelet -->
+    <article class="card" data-sku="KAR-BRACE-01">
+      <div class="media">
+        <img src="images/karungali-bracelet-1.jpg" alt="Karungali Bracelet" onclick="openLightbox(this.src)">
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h3>Karungali Bracelet</h3>
+          <div class="price">₹499 <span class="old">₹599</span></div>
+        </div>
+        <div class="muted">Natural healing bracelet</div>
+        <div class="thumbs">
+          <img src="images/karungali-bracelet-1.jpg" alt="" onclick="swap(this)">
+          <img src="images/karungali-bracelet-2.jpg" alt="" onclick="swap(this)">
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="addToCart({name:'Karungali Bracelet', price:499, img:'images/karungali-bracelet-1.jpg'})">Add to cart</button>
+          <button class="btn btn-ghost" onclick="openLightbox('images/karungali-bracelet-1.jpg')">View</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Rudraksha Mala -->
+    <article class="card" data-sku="RUDRA-01">
+      <div class="media">
+        <img src="images/rudraksha-mala-1.jpg" alt="Rudraksha Mala" onclick="openLightbox(this.src)">
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h3>Rudraksha Mala</h3>
+          <div class="price">₹999</div>
+        </div>
+        <div class="muted">Powerful 108 beads mala</div>
+        <div class="thumbs">
+          <img src="images/rudraksha-mala-1.jpg" alt="" onclick="swap(this)">
+          <img src="images/rudraksha-mala-2.jpg" alt="" onclick="swap(this)">
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="addToCart({name:'Rudraksha Mala', price:999, img:'images/rudraksha-mala-1.jpg'})">Add to cart</button>
+          <button class="btn btn-ghost" onclick="openLightbox('images/rudraksha-mala-1.jpg')">View</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- Tulsi Mala -->
+    <article class="card" data-sku="TULSI-01">
+      <div class="media">
+        <img src="images/tulsi-mala-1.jpg" alt="Tulsi Mala" onclick="openLightbox(this.src)">
+      </div>
+      <div class="card-body">
+        <div class="title-row">
+          <h3>Tulsi Mala</h3>
+          <div class="price">₹599</div>
+        </div>
+        <div class="muted">Sacred Tulsi beads</div>
+        <div class="thumbs">
+          <img src="images/tulsi-mala-1.jpg" alt="" onclick="swap(this)">
+          <img src="images/tulsi-mala-2.jpg" alt="" onclick="swap(this)">
+        </div>
+        <div class="card-actions">
+          <button class="btn btn-primary" onclick="addToCart({name:'Tulsi Mala', price:599, img:'images/tulsi-mala-1.jpg'})">Add to cart</button>
+          <button class="btn btn-ghost" onclick="openLightbox('images/tulsi-mala-1.jpg')">View</button>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <section id="about" style="padding:1rem 0">
+    <h2 style="margin:.4rem 0 0;font-size:1.1rem;color:var(--brand-dark)">About Us</h2>
+    <p style="margin:.45rem 0;color:var(--muted)">PADHMAM crafts authentic malas and spiritual accessories with devotion and purity. Shipping 3–5 business days. </p>
+  </section>
+
+  <section id="contact" style="padding:1rem 0">
+    <h2 style="margin:.4rem 0 0;font-size:1.05rem;color:var(--brand-dark)">Contact</h2>
+    <p style="margin:.45rem 0;color:var(--muted)">Email: support@padhmam.com · WhatsApp: +919446936360</p>
+  </section>
+
+</main>
+
+<aside class="cart-sidebar" id="cart">
+  <div class="cart-header">
+    <div style="font-weight:800">Your Cart</div>
+    <button style="background:transparent;border:none;color:#fff;font-size:1.1rem;cursor:pointer" onclick="toggleCart()">✖</button>
+  </div>
+  <div class="cart-items" id="cart-items" role="list"></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cart-total">₹0</span></div>
+    <button class="btn btn-primary" style="width:100%;margin-bottom:.5rem" onclick="checkoutWhatsApp()">Checkout via WhatsApp</button>
+    <button class="btn btn-ghost" style="width:100%" onclick="checkoutUPI()">Pay with UPI</button>
+    <div style="font-size:.9rem;color:#666;margin-top:.6rem;text-align:center">Secure payment · Authentic guarantee</div>
+  </div>
+</aside>
+
+<div id="lightbox" class="lightbox" onclick="closeLightbox()" role="dialog" aria-hidden="true">
+  <img id="lightbox-img" src="" alt="Enlarged product image" onclick="event.stopPropagation()">
+</div>
+
+<footer>
+  <div class="wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap">
+      <div>© 2025 PADHMAM</div>
+      <div style="opacity:.95">Follow us on Instagram · Facebook</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const header = document.querySelector('header');
+window.addEventListener('scroll', ()=> header.style.boxShadow = (window.scrollY>20) ? '0 14px 40px rgba(10,8,8,.12)' : '0 6px 18px rgba(10,8,8,.12)');
+
+const CART_KEY = 'padhmam_cart_v1';
+let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+
+function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }
+function cartCount(){ return cart.reduce((s,i)=>s+i.qty,0); }
+function cartTotal(){ return cart.reduce((s,i)=>s + (i.price * i.qty),0); }
+
+function updateCartUI(){
+  const list = document.getElementById('cart-items'); list.innerHTML='';
+  if(cart.length===0){ list.innerHTML = '<div style="padding:1.2rem;color:#666">Your cart is empty</div>'; }
+  cart.forEach((it, idx)=>{
+    list.innerHTML += `
+      <div class="cart-item" role="listitem">
+        <img src="${it.img}" alt="${it.name}">
+        <div style="flex:1">
+          <h4 style="margin:0;font-size:.98rem">${it.name}</h4>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.45rem">
+            <div style="color:#777">₹${it.price} × ${it.qty}</div>
+            <div class="qty">
+              <button onclick="changeQty(${idx}, -1)">−</button>
+              <div style="min-width:22px;text-align:center">${it.qty}</div>
+              <button onclick="changeQty(${idx}, 1)">+</button>
             </div>
-          </div>`;
-      });
-      document.getElementById('cart-total').innerText = '₹' + cartTotal();
-      document.getElementById('cart-count').innerText = cartCount();
-      saveCart();
-    }
+          </div>
+        </div>
+      </div>`;
+  });
+  document.getElementById('cart-total').innerText = '₹' + cartTotal();
+  document.getElementById('cart-count').innerText = cartCount();
+  saveCart();
+}
 
-    function addToCart(item){
-      const existing = cart.find(i=>i.name===item.name);
-      if(existing) existing.qty++;
-      else cart.push({...item, qty:1});
-      openCart(); updateCartUI();
-      // small visual feedback
-      flashCart();
-    }
-    function changeQty(i, delta){
-      if(!cart[i]) return;
-      cart[i].qty += delta;
-      if(cart[i].qty <= 0) cart.splice(i,1);
-      updateCartUI();
-    }
-    function openCart(){ document.getElementById('cart').classList.add('open'); }
-    function toggleCart(){ document.getElementById('cart').classList.toggle('open'); }
-    function flashCart(){
-      const el = document.querySelector('.cart-btn');
-      el.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:320});
-    }
+function addToCart(item){
+  const existing = cart.find(i=>i.name===item.name);
+  if(existing) existing.qty++;
+  else cart.push({...item, qty:1});
+  openCart(); updateCartUI(); flashCart();
+}
+function changeQty(i, delta){
+  if(!cart[i]) return;
+  cart[i].qty += delta;
+  if(cart[i].qty <= 0) cart.splice(i,1);
+  updateCartUI();
+}
+function openCart(){ document.getElementById('cart').classList.add('open'); }
+function toggleCart(){ document.getElementById('cart').classList.toggle('open'); }
+function flashCart(){
+  const el = document.querySelector('.cart-btn');
+  el.animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:320});
+}
 
-    /* checkout helpers */
-    function checkoutWhatsApp(){
-      if(cart.length===0) return openCart();
-      const phone = '91XXXXXXXXXX';
-      let message = '🛍️ PADHMAM Order%0A%0A';
-      cart.forEach(i=> message += `${i.name} x ${i.qty} - ₹${i.price*i.qty}%0A`);
-      message += `%0A*Total:* ₹${cartTotal()}`;
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-    }
-    function checkoutUPI(){
-      if(cart.length===0) return openCart();
-      const am = cartTotal();
-      window.location.href = `upi://pay?pa=yourupi@upi&pn=PADHMAM&am=${am}&cu=INR`;
-    }
+function checkoutWhatsApp(){
+  if(cart.length===0) return openCart();
+  const phone = '919446936360';
+  let message = '🛍️ PADHMAM Order%0A%0A';
+  cart.forEach(i=> message += `${i.name} x ${i.qty} - ₹${i.price*i.qty}%0A`);
+  message += `%0A*Total:* ₹${cartTotal()}`;
+  window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+}
+function checkoutUPI(){
+  if(cart.length===0) return openCart();
+  const am = cartTotal();
+  window.location.href = `upi://pay?pa=yourupi@upi&pn=PADHMAM&am=${am}&cu=INR`;
+}
 
-    /* thumbnails + lightbox */
-    function swap(el, type, src){
-      // find parent card image and swap
-      const card = el.closest('.card');
-      const img = card.querySelector('.media img');
-      if(img) img.src = src;
-    }
-    function openLightbox(src){
-      const lb = document.getElementById('lightbox');
-      document.getElementById('lightbox-img').src = src;
-      lb.classList.add('show'); lb.setAttribute('aria-hidden','false');
-    }
-    function closeLightbox(){
-      const lb = document.getElementById('lightbox');
-      lb.classList.remove('show'); lb.setAttribute('aria-hidden','true');
-    }
-    document.addEventListener('keydown', (e)=> { if(e.key==='Escape') closeLightbox(); });
+function swap(el){
+  const card = el.closest('.card');
+  const img = card.querySelector('.media img');
+  if(img) img.src = el.src;
+}
+function openLightbox(src){
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lightbox-img').src = src;
+  lb.classList.add('show'); lb.setAttribute('aria-hidden','false');
+}
+function closeLightbox(){
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('show'); lb.setAttribute('aria-hidden','true');
+}
+document.addEventListener('keydown', (e)=> { if(e.key==='Escape') closeLightbox(); });
 
-    // init
-    updateCartUI();
-  </script>
+updateCartUI();
+</script>
+
 </body>
 </html>
